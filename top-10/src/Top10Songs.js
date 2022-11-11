@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 
-const Top10Songs = ({ countTitles }) => {
+const Top10Songs = ({ sortedPlays }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  let top10SongTitles = countTitles()
-    .slice(0, 10)
-    .map((song, index) => {
-      return <li key={index}>{`${song[0].toString().slice(8)}`}</li>;
-    });
+  console.log(sortedPlays);
+
+  let top10SongTitles = sortedPlays.slice(0, 10).map((song, index) => {
+    return <li key={index}>{`${song[0].toString().slice(8)}`}</li>;
+  });
+
+  let top10SongCount = sortedPlays.slice(0, 10).map((song, index) => {
+    return <li key={index}>{`${song[1]}`}</li>;
+  });
 
   return (
     <div>
@@ -27,10 +31,18 @@ const Top10Songs = ({ countTitles }) => {
           centered
         >
           <Modal.Header closeButton>
-            <Modal.Title>Most Listened to Songs</Modal.Title>
+            <Modal.Title className="modal-title">
+              Song & Number of Streams
+            </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <ol>{top10SongTitles}</ol>
+            <div className="ol-div"></div>
+            <div className="ol-div">
+              {/* <p>Songs</p> */}
+              <ol>{top10SongTitles}</ol>
+              {/* <p className="listens-header">Number of Listens</p> */}
+              <ul className="listens-count">{top10SongCount}</ul>
+            </div>
           </Modal.Body>
         </Modal>
       </>

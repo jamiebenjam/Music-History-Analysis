@@ -25,6 +25,10 @@ li {
   text-align: left;
 }
 
+ul {
+  list-style-type: none;
+}
+
 h1 {
   font-family: Cool;
   text-align: center;
@@ -55,11 +59,29 @@ h1 {
   font-family: Bo;
 }
 
+.modal-title {
+  padding-left: 8em;
+}
+
 .logo {
-  height: 5rem;
+  height: 6rem;
   display: flex;
 }
 
 .animation {
   font-family: Cool;
 }
+
+.ol-div {
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+}
+
+/* .listens-header {
+  padding-left: 100px;
+}
+
+.listens-count {
+  padding-left: 100px;
+} */

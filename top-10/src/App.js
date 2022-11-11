@@ -5,22 +5,25 @@ import Top10Songs from './Top10Songs';
 import { TypeAnimation } from 'react-type-animation';
 
 function App() {
-  const [plays, setPlays] = useState([]);
+  const [playCount, setPlayCount] = useState(0);
   const [showTop10, setShowTop10] = useState(false);
   const [showUniqueSongs, setShowUniqueSongs] = useState(false);
   const [totalClicks, setTotalClicks] = useState(false);
+  const [sortedPlays, setSortedPlays] = useState([]);
 
   useEffect(() => {
     fetch('http://localhost:3000/plays')
       .then(response => response.json())
-      .then(data => setPlays(data));
+      .then(data => {
+        setPlayCount(data.length);
+        setSortedPlays(sortPlays(data));
+      });
   }, []);
 
-  //object with key value pairs of all songs
-  const countTitles = () => {
+  const sortPlays = totalPlays => {
     let songList = {};
 
-    plays.map(play => {
+    totalPlays.map(play => {
       if (!(play.title in songList)) {
         return (songList = { ...songList, [play.title]: 1 });
       } else {
@@ -40,19 +43,14 @@ function App() {
   };
 
   const handleTop10Click = () => {
-    console.log('clicked');
     setShowTop10(showTop10 => !showTop10);
   };
 
   const handleUniqueCountClick = () => {
-    console.log('clicked');
-    console.log(countTitles());
     setShowUniqueSongs(showUniqueSongs => !showUniqueSongs);
   };
 
   const handleTotalClicks = () => {
-    console.log('clicked');
-    console.log(plays);
     setTotalClicks(totalClicks => !totalClicks);
   };
 
@@ -76,15 +74,15 @@ function App() {
           className="animation"
         />
         <button onClick={handleTop10Click}>
-          <Top10Songs countTitles={countTitles} />
+          <Top10Songs sortedPlays={sortedPlays} />
         </button>
 
         <button onClick={handleUniqueCountClick}>
-          {showUniqueSongs ? countTitles().length : 'Unique Song Listens'}
+          {showUniqueSongs ? sortedPlays.length : 'Total Songs Listened To'}
         </button>
 
         <button onClick={handleTotalClicks}>
-          {totalClicks ? plays.length : 'Total Streams'}
+          {totalClicks ? playCount : 'Total Streams'}
         </button>
       </div>
     </div>
