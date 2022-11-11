@@ -20,5 +20,5 @@ Open another terminal and run
 
 ### npm start
 
-to view in your browser.
+to view in your browser and allow a few moments for the page to load.
 
