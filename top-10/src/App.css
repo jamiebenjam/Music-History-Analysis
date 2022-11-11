@@ -3,26 +3,32 @@
   src: url(Fonts/BOOWIE.ttf);
 }
 
+@font-face {
+  font-family: Cool;
+  src: url(Fonts/coolvetica\ rg.otf);
+}
+
 button {
   width: 75%;
   max-width: 350px;
   min-width: 250px;
-  height: 40px;
   border: none;
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   border-radius: 8px;
   background-color: #331574;
   color: #fff;
   font-weight: 600;
+  padding: 15px;
+}
+
+li {
+  text-align: left;
 }
 
 h1 {
-  font-family: Bo;
+  font-family: Cool;
   text-align: center;
-}
-
-p {
-  text-align: center;
+  font-size: 3em;
 }
 
 .App {
@@ -36,7 +42,7 @@ p {
 
 .container {
   backdrop-filter: blur(35px);
-  background-color: rgba(255, 255, 255, 0.8);  margin: 10rem;
+  background-color: rgba(255, 255, 255, 0.25);  margin: 10rem;
   padding: 80px;
   border-radius: 10px;
   display: flex;
@@ -47,4 +53,8 @@ p {
 .logo {
   height: 5rem;
   display: flex;
+}
+
+.animation {
+  font-family: Cool;
 }

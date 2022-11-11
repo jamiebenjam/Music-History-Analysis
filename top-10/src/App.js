@@ -1,9 +1,14 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import logo from './/Images/youtube.png';
+import Top10Songs from './Top10Songs';
+import { TypeAnimation } from 'react-type-animation';
 
 function App() {
   const [plays, setPlays] = useState([]);
+  const [showTop10, setShowTop10] = useState(false);
+  const [showUniqueSongs, setShowUniqueSongs] = useState(false);
+  const [totalClicks, setTotalClicks] = useState(false);
 
   useEffect(() => {
     fetch('http://localhost:3000/plays')
@@ -11,6 +16,7 @@ function App() {
       .then(data => setPlays(data));
   }, []);
 
+  //object with key value pairs of all songs
   const countTitles = () => {
     let songList = {};
 
@@ -30,25 +36,55 @@ function App() {
     sortedPlays.sort(function (a, b) {
       return b[1] - a[1];
     });
-    return sortedPlays.slice(0, 10).map(song => {
-      return <li>{`${song[0].toString().slice(8)} Plays: ${song[1]}`}</li>;
-    });
+    return sortedPlays;
   };
 
-  console.log(countTitles());
-
-  const handleClick = () => {
+  const handleTop10Click = () => {
     console.log('clicked');
+    setShowTop10(showTop10 => !showTop10);
+  };
+
+  const handleUniqueCountClick = () => {
+    console.log('clicked');
+    console.log(countTitles());
+    setShowUniqueSongs(showUniqueSongs => !showUniqueSongs);
+  };
+
+  const handleTotalClicks = () => {
+    console.log('clicked');
+    console.log(plays);
+    setTotalClicks(totalClicks => !totalClicks);
   };
 
   return (
     <div className="App">
       <div className="container">
         <img className="logo" src={logo} alt="logo" />
-        <h1>YouTube Rewind</h1>
-        <p>Your Top 10 Listened to Songs</p>
-        <ol>{countTitles()}</ol>
-        {/* <button onClick={handleClick}>My Top 10</button> */}
+        <h1>YouTube Music Rewind</h1>
+        <TypeAnimation
+          sequence={['See how you listened!']}
+          wrapper="span"
+          speed={20}
+          cursor={true}
+          repeat={3}
+          style={{ fontSize: '1.2em' }}
+          className="animation"
+        />
+        <button onClick={handleTop10Click}>
+          {showTop10 ? (
+            <Top10Songs countTitles={countTitles} />
+          ) : (
+            'My Top 10 Songs'
+          )}
+        </button>
+
+        <button onClick={handleUniqueCountClick}>
+          {showUniqueSongs ? countTitles().length : '# Unique Songs'}
+        </button>
+
+        <button onClick={handleTotalClicks}>
+          {totalClicks ? plays.length : 'Total Clicks'}
+        </button>
       </div>
     </div>
   );
