@@ -71,19 +71,15 @@ function App() {
           className="animation"
         />
         <button onClick={handleTop10Click}>
-          {showTop10 ? (
-            <Top10Songs countTitles={countTitles} />
-          ) : (
-            'My Top 10 Songs'
-          )}
+          <Top10Songs countTitles={countTitles} />
         </button>
 
         <button onClick={handleUniqueCountClick}>
-          {showUniqueSongs ? countTitles().length : '# Unique Songs'}
+          {showUniqueSongs ? countTitles().length : 'Unique Song Listens'}
         </button>
 
         <button onClick={handleTotalClicks}>
-          {totalClicks ? plays.length : 'Total Clicks'}
+          {totalClicks ? plays.length : 'Total Streams'}
         </button>
       </div>
     </div>
