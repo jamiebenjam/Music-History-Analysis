@@ -6,6 +6,10 @@ This is a single page application built with React front end and a JSON server b
 
 Due to the data set being quite large and in JSON, I found that my first few methods were not rendering the information quickly enough and I needed to have better space / time complexity. To combat this and handle the information as efficiently as possible, I set the data coming in from the fetch to go directly to my sortPlays function that maps over the plays to return an object with the title of the song as the key and the number of plays as the value. This object is then looped through and put into arrays to be sorted by the value. Because this sortPlays function is used multiple times, the output of the function is set to a state variable. This helps the application run more quickly since it doesn't have to run the function for each user interaction, but rather runs on the page load. Although the page load on the front end takes a few seconds, this process is more efficient than having to wait after each click.
 
+## Future Advancements
+
+With more time to work on this project, I would have liked to add more analysis on the data such as most frequent artist listened to and the date with the most plays. I styled using a fitting background image, YouTube logo, TypeScript animation, sourced fonts, custom CSS, and Bootstrap. I would have liked to add more animation when displaying the numbers or a parallax scrolling feature and have larger page to scroll rather than the static page. 
+
 ## Installation
 
 Clone this repository to your system,
