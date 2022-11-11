@@ -7,8 +7,6 @@ const Top10Songs = ({ sortedPlays }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  console.log(sortedPlays);
-
   let top10SongTitles = sortedPlays.slice(0, 10).map((song, index) => {
     return <li key={index}>{`${song[0].toString().slice(8)}`}</li>;
   });
@@ -36,12 +34,9 @@ const Top10Songs = ({ sortedPlays }) => {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <div className="ol-div"></div>
             <div className="ol-div">
-              {/* <p>Songs</p> */}
               <ol>{top10SongTitles}</ol>
-              {/* <p className="listens-header">Number of Listens</p> */}
-              <ul className="listens-count">{top10SongCount}</ul>
+              <ul>{top10SongCount}</ul>
             </div>
           </Modal.Body>
         </Modal>

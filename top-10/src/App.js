@@ -31,15 +31,15 @@ function App() {
       }
     });
 
-    let sortedPlays = [];
+    let sortedPlaysByListens = [];
 
     for (let song in songList) {
-      sortedPlays.push([song, songList[song]]);
+      sortedPlaysByListens.push([song, songList[song]]);
     }
-    sortedPlays.sort(function (a, b) {
+    sortedPlaysByListens.sort(function (a, b) {
       return b[1] - a[1];
     });
-    return sortedPlays;
+    return sortedPlaysByListens;
   };
 
   const handleTop10Click = () => {
