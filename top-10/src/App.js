@@ -62,9 +62,14 @@ function App() {
         <img className="logo" src={logo} alt="logo" />
         <h1>YouTube Music Rewind</h1>
         <TypeAnimation
-          sequence={['See how you listened!']}
+          sequence={[
+            'Ready for your 2022 rewind?',
+            2000,
+            "Let's see how you listened",
+            2000,
+          ]}
           wrapper="span"
-          speed={20}
+          speed={40}
           cursor={true}
           repeat={3}
           style={{ fontSize: '1.2em' }}

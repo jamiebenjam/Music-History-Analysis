@@ -1,6 +1,6 @@
 @font-face {
   font-family: Bo;
-  src: url(Fonts/BOOWIE.ttf);
+  src: url(Fonts/argestadisplay-regular-webfont.ttf);
 }
 
 @font-face {
@@ -49,6 +49,10 @@ h1 {
   flex-direction: column;
   align-items: center;
   height: fit-content;
+}
+
+.modal {
+  font-family: Bo;
 }
 
 .logo {

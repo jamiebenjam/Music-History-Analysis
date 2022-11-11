@@ -19,6 +19,7 @@ const Top10Songs = ({ countTitles }) => {
         <button onClick={handleShow}>Top 10 Songs</button>
 
         <Modal
+          className="modal"
           show={show}
           onHide={handleClose}
           size="lg"
